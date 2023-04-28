@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Momox - Bezahlung und Versand</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <style type="text/css">
+    /* Body */
+    body {
+      color: #000;
+      font-family: Lato, sans-serif;
+    }
+
+    /* Landing page */
+    .landingpage {
+      display: grid;
+      justify-content: center;
+    }
+
+    /* Landing page headings */
+    .landingpage h1,
+    .landingpage h2,
+    .landingpage h3,
+    .landingpage h4 {
+      font-weight: 400;
+      color: #000;
+      margin-bottom: 24px;
+      margin-top: 0;
+      text-transform: uppercase;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+
+    /* Landing page H1 */
+    .landingpage h1 {
+      font-size: calc(16px + 0.5vw);
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 140%;
+    }
+
+    /* Landing page H2 */
+    .landingpage h2 {
+      font-size: calc(16px + 0.4vw);
+      font-weight: 700;
+      line-height: 140%;
+    }
+
+    /* Grid */
+    .grid {
+      display: -ms-grid;
+      display: grid;
+      -ms-grid-columns: 100%;
+      grid-template-columns: 100%;
+      max-width: 1110px;
+    }
+
+    /* Grid banner */
+    .grid_banner {
+      display: -ms-grid;
+      display: grid;
+      -ms-grid-columns: 100%;
+      grid-template-columns: 100%;
+      max-width: 1110px;
+    }
+
+    /* Grid x */
+    .gridx {
+      max-width: 650px;
+      text-align: center;
+      margin: auto;
+    }
+
+    /* Space between grids */
+    .grid,
+    .grid_banner,
+    .gridx {
+      margin-bottom: 2rem;
+    }
+
+    /* Grid x for screen width less than 600px */
+    @media only screen and (max-width: 600px) {
+      .gridx {
+        -ms-grid-columns: 100%;
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Article box */
+    .artikel-box {
+      display: grid;
+      padding-top: 8px;
+    }
+
+    /* Article text */
+    .artikeltext {
+      font-size: 18px;
+      font-weight: 400;
+      color: #000;
+      margin-bottom: 16px;
+      margin-top: 16px;
+    }
+
+    /* Line */
+    .linie {
+      border-top: 1px solid #000;
+      margin-top: 16px;
+    }
+
+    /* Grid column span fix for IE */
+    _:-ms-fullscreen,
+    :root .grid {
+      margin-right: 0 !important;
+    }
+
+    /* Box */
+    .boxx {
+      margin-top: 0;
+      margin-bottom: 0;
+      padding: 0 0;
+    }
+
+    /* Box */
+    .boxx p {
+      margin-bottom: 0px;
+    }
+
+    /* Bild-breit */
+    .bild-breit {
+      width: 100%;
+      max-width: 1140px;
+      top: -96px;
+      z-index: 10;
+    }
+
+    /* Underline Magical for different screen sizes */
+    @media only screen and (min-width: 400px) {
+      .underline--magical1 {
+        background-image: linear-gradient(
+          120deg,
+          rgba(4, 236, 126, 15%),
+          rgba(4, 236, 126, 15%)
+        );
+        background-repeat: no-repeat;
+        background-size: 50% 4em;
+        background-position: 100% 0;
+        height: 4em;
+        margin-top: -32px;
+      }
+
+      .underline--magical4 {
+        background-image: linear-gradient(
+          120deg,
+          rgba(206, 81, 83, 15%),
+          rgba(206, 81, 83, 15%)
+        );
+        background-repeat: no-repeat;
+        background-size: 50% 4em;
+        background-position: 0% 84%;
+        height: 4em;
+        margin-top: -56px;
+      }
+    }
+
+    @media only screen and (max-width: 400px) {
+      .landingpage h1 {
+        margin-bottom: 16px;
+      }
+      .linie {
+        padding-right: 24px;
+      }
+      .spacing {
+        margin-top: 8px;
+      }
+    }
+
+    /* H1 Grid */
+    .h1grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      grid-column-gap: 24px;
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+      margin-top: 32px;
+    }
+
+    /* Table */
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 18px;
+      margin: 40px 0 24px 0;
+    }
+
+    /* Table Cells */
+    td,
+    th {
+      text-align: left;
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    /* Table Header */
+    th {
+      background-color: #f2f2f2;
+      font-weight: 700;
+    }
+
+    /* Table Row Hover */
+    tbody tr:hover {
+      background-color: #f0f2f1;
+    }
+
+    /* Table and card responsive */
+    @media (max-width: 600px) {
+      td,
+      th {
+        font-size: 1rem;
+      }
+      .card {
+        display: block;
+        width: 100% !important;
+        margin-bottom: 24px;
+      }
+    }
+
+    /* Cards */
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+      border: 1px solid #d8d8d8;
+      box-sizing: border-box;
+      vertical-align: top;
+    }
+
+    .card-content {
+      flex-grow: 1;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+      border: 1px solid #d8d8d8;
+      width: calc(50% - 16px);
+      box-sizing: border-box;
+      vertical-align: top;
+    }
+
+    .card:hover {
+      background-color: #f0f2f1;
+    }
+
+    /* Logos */
+    .payment-logo {
+      transition: transform 0.3s ease;
+      padding: 8px;
+    }
+
+    .payment-logo:hover {
+      transform: scale(1.3);
+    }
+  </style>
+  <body>
+    <div class="landingpage">
+      <!-- Header grid with title -->
+      <div class="grid">
+        <div class="boxx">
+          <div class="h1grid">
+            <div class="linie">&nbsp;</div>
+            <div>
+              <!-- Title -->
+              <h1><b>Bezahlung &amp; Versand</b></h1>
+            </div>
+            <div class="linie">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Banner image -->
+      <div class="grid_banner">
+        <picture class="top_banner">
+          <source
+            media="(min-width: 600px)"
+            srcset="assets/online-einkauf-d.png"
+          />
+          <source srcset="assets/online-einkauf-m.png" />
+          <img
+            alt="momox fashion Aktionen"
+            class="bild-breit"
+            src="assets/online-einkauf-d.png"
+          />
+        </picture>
+      </div>
+
+      <!-- Delivery information -->
+      <div class="gridx">
+        <div>
+          <div class="artikeltext">
+            <h2>Informationen zur Lieferung</h2>
+            <p>
+              Alle Bestellungen, die bis 13 Uhr bezahlt sind, machen wir
+              werktags innerhalb von
+              <strong>24 Stunden versandfertig</strong>.<br />
+              &nbsp;
+            </p>
+          </div>
+          <div class="card-container">
+            <!-- card 1 -->
+            <div class="card">
+              <div class="card-content">
+                <img
+                  class="dhl-logo"
+                  src="assets/dhl.svg"
+                  height="21"
+                  style="cursor: pointer"
+                />
+                <p class="artikeltext">
+                  Alle Bestellungen, die bis 13 Uhr bezahlt sind, machen wir
+                  werktags innerhalb von
+                  <strong>24 Stunden versandfertig</strong>.<br />
+                  Dein Paket verschicken wir immer versichert mit DHL.<br />
+                  Eine DHL-Trackingnummer stellen wir dir nach dem Versand zur
+                  Verfügung. In der Regel erreicht dich deine Bestellung
+                  innerhalb von
+                  <strong>1-2 Werktagen</strong>.
+                </p>
+              </div>
+            </div>
+            <!-- card 2 -->
+            <div class="card">
+              <div class="card-content">
+                <img
+                  class="dhl-gogreen-logo"
+                  src="assets/DHL_Green.svg"
+                  height="35"
+                  style="cursor: pointer"
+                />
+                <p class="artikeltext">
+                  In Deutschland werden alle Pakete
+                  <strong>klimaneutral mit DHL GoGreen</strong> versendet. Das
+                  bedeutet, dass die fast 2 Millionen Pakete, die jährlich an
+                  momox fashion Kund:innen rausgehen sowie alle Retouren,
+                  klimaneutral versendet werden. Damit gehen wir einen weiteren
+                  Schritt zur Verringerung unseres ökologischen Fußabdrucks.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shipping costs -->
+      <div class="gridx">
+        <div class="boxx">
+          <div class="artikeltext">
+            <h2>Versandkosten</h2>
+            <p>
+              Innerhalb Deutschlands versenden wir deine Bestellung ab einem
+              Mindestbestellwert von 25 € <strong>kostenfrei</strong> an
+              dich.<br />
+              Bei Bestellungen unter einem Warenkorbwert von 25 € berechnen wir
+              eine Versandgebühr in Höhe von 4,90 €.<br />
+              &nbsp;
+            </p>
+            <div class="underline--magical4"></div>
+            <p>
+              <strong>Zur Info:</strong><br /><br />
+              Wenn du bei deiner Bestellung einen
+              <strong>Aktionsgutschein</strong>, also einen Rabattcode nutzt und
+              damit unter einem Bestellwert von 25 € landest, berechnen wir
+              <strong>keine Versandkosten</strong>. Löst du bei deiner
+              Bestellung einen <strong>Wertgutschein</strong> ein und dein
+              Warenkorbwert sinkt auf unter 25 €, liefern wir dein Paket
+              ebenfalls <strong>versandkostenfrei</strong>.
+            </p>
+          </div>
+        </div>
+        <!-- Table -->
+        <table>
+          <thead>
+            <tr>
+              <th>Land</th>
+              <th>Versandkosten</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Deutschland</td>
+              <td>kostenfrei ab 25 € Mindestbestellwert, ansonsten 4,90 €</td>
+            </tr>
+            <tr>
+              <td>Belgien, Österreich, Polen</td>
+              <td>3,95 Euro</td>
+            </tr>
+            <tr>
+              <td>Frankreich</td>
+              <td>4,90 Euro</td>
+            </tr>
+            <tr>
+              <td>Italien, Spanien</td>
+              <td>5,95 Euro</td>
+            </tr>
+            <tr>
+              <td>Liechtenstein, Monaco</td>
+              <td>7,95 Euro</td>
+            </tr>
+            <tr>
+              <td>
+                Bulgarien, Dänemark, Estland, Finnland, Irland, Lettland,
+                Litauen, Luxemburg, Malta, Niederlande, Portugal, Rumänien, San
+                Marino, Schweden, Slowakei, Slowenien, Tschechische Republik,
+                Zypern
+              </td>
+              <td>9,95 Euro</td>
+            </tr>
+            <tr>
+              <td>Griechenland</td>
+              <td>14,95 Euro</td>
+            </tr>
+            <tr>
+              <td>Kroatien, Ungarn</td>
+              <td>15,95 Euro</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Payment methods -->
+      <div class="gridx">
+        <div>
+          <h2>Zahlungsmethoden</h2>
+          <p class="artikeltext">
+            Bezahle deine neuen Second Hand Einzelstücke ganz einfach per
+            <strong>Rechnung, PayPal oder Kreditkarte</strong>. Sobald du deine
+            Bestellung bei uns erfolgreich aufgegeben hast, machen wir dein
+            Paket versandfertig.
+          </p>
+          <div class="lp-section-payment-icons">
+            <img
+              class="payment-logo"
+              src="assets/klarna.webp"
+              height="20"
+              style="cursor: pointer"
+            />
+            <img
+              class="payment-logo"
+              src="assets/paypal.svg"
+              height="20"
+              style="cursor: pointer"
+            />
+            <img
+              class="payment-logo"
+              src="assets/Visa.svg"
+              height="18"
+              style="cursor: pointer"
+            />
+            <img
+              class="payment-logo"
+              src="assets/Mastercard.svg"
+              height="25"
+              style="cursor: pointer"
+            />
+            <img class="payment-logo" src="assets/American_Express.svg" 25"=""
+            style="cursor:pointer;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Returns -->
+      <div class="gridx">
+        <div class="boxx">
+          <h2>Retouren</h2>
+          <p class="artikeltext">
+            Sollte ein Artikel einmal nicht deinen Erwartungen entsprechen,
+            nehmen wir ihn <strong>innerhalb von 30 Tagen</strong> zurück.
+            Innerhalb Deutschlands ist die Rücksendung kostenlos und
+            klimaneutral. Bitte nutze hierfür unser Retourenportal.<br />
+            <br />
+            Bei Bestellungen unterhalb des Mindestbestellwertes von 25 €
+            erstatten wir die Versandkosten im Falle einer Retoure.
+          </p>
+          <div class="underline--magical1"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
